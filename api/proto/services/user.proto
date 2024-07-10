@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "github.com/bryanwahyu/test-golang/api/proto/services/user";
+service UserService {
+  rpc CreateUser(CreateUserRequest) returns (DefaultUserResponse) {}
+  rpc GetUser(GetUserRequest) returns (UserResponse) {}
+  rpc UpdateUser(UpdateUserRequest) returns (DefaultUserResponse) {}
+  rpc DeleteUser(DeleteUserRequest) returns (DefaultUserResponse) {}
+}
+
+message CreateUserRequest {
+  string username = 1;
+  string password = 2;
+  string email = 3;
+}
+
+message GetUserRequest {
+  int32 id = 1;
+}
+
+message UpdateUserRequest {
+  int32 id = 1;
+  string username = 2;
+  string email = 3;
+}
+
+message DeleteUserRequest {
+  int32 id = 1;
+}
+message DefaultUserResponse {
+  string status =1;
+  string message = 2;
+}
+
+message UserResponse {
+  int32 id = 1;
+  int32 role_id=2;
+  string role_name = 3;
+  string email = 4;
+  string name=5;
+  string last_access=6;
+  
+}
+
